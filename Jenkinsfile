@@ -21,10 +21,10 @@ pipeline {
                 echo 'Building..'
                 echo "branch: ${env.BRANCH_NAME}"
                 
-                dir('Jorkins') {
+                
                     checkout scm
                     unstash 'REALLYIMPORTANT.txt'
-                }
+                
             }
         }
         stage('Test') {
