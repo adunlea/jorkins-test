@@ -2,9 +2,18 @@ pipeline {
     agent any
 
     stages {
+        stage('Build Backend') {
+            when {
+                branch 'production'
+            }
+            steps {
+                dir('Bellerophon') {
+                    git branch: 'production', url: 'https://github.com/adunlea/Bellerophon.git'
+                }
+            }
+        }
         stage('Build') {
             steps {
-                checkout scm
                 echo 'Building..'
                 echo "branch: ${env.BRANCH_NAME}"
             }
@@ -20,6 +29,7 @@ pipeline {
             }
             steps {
                 echo 'Deploying...'
+                echo "It's production party time!"
             }
         }
         stage('Dance Party') {
