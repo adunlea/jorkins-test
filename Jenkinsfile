@@ -6,6 +6,7 @@ pipeline {
             steps {
                 git 'https://github.com/adunlea/jorkins-test.git'
                 echo 'Building..'
+                echo "branch: ${env.BRANCH_NAME}"
             }
         }
         stage('Test') {
@@ -13,9 +14,15 @@ pipeline {
                 echo 'Testing..'
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+        
+        
+        
+        if(env.BRANCH_NAME == 'production')
+        {
+            stage('Deploy') {
+                steps {
+                    echo 'Deploying....'
+                }
             }
         }
         stage('Dance Party') {
