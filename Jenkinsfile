@@ -17,7 +17,7 @@ pipeline {
         
         
         
-        if(env.BRANCH_NAME == 'production')
+        if($env.BRANCH_NAME == 'production')
         {
             stage('Deploy') {
                 steps {
