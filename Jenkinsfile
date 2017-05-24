@@ -20,6 +20,7 @@ pipeline {
             }
             steps {
                 echo 'Deploying...'
+                echo "It's production party time!"
             }
         }
         stage('Dance Party') {
