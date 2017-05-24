@@ -11,7 +11,7 @@ pipeline {
                 branch 'production*'
             }
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: "*/${env.BRANCH_NAME}"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'Bellerophon']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'a3a4c2c2-d68d-4a7c-a2d3-d3cb3d297ce8', url: 'https://github.com/adunlea/Bellerophon.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: "*/${env.BRANCH_NAME}"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'Bellerophon-GOOSE']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'a3a4c2c2-d68d-4a7c-a2d3-d3cb3d297ce8', url: 'https://github.com/adunlea/Bellerophon.git']]])
                 stash 'REALLYIMPORTANT.txt'
             }
         }
@@ -21,10 +21,10 @@ pipeline {
                 echo 'Building..'
                 echo "branch: ${env.BRANCH_NAME}"
                 
-                
+                dir(Johorokins) {
                     checkout scm
                     unstash 'REALLYIMPORTANT.txt'
-                
+                }
             }
         }
         stage('Test') {
