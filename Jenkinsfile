@@ -14,14 +14,12 @@ pipeline {
                 echo 'Testing..'
             }
         }
-        
-        
-        
-        if($env.BRANCH_NAME == 'production')
-        {
-            stage('Deploy') {
-                steps {
-                    echo 'Deploying....'
+        stage('Deploy') {
+            steps {
+                if($env.BRANCH_NAME == 'production') {
+                    echo 'Deploying for production...'
+                } else {
+                    echo "Deploying for something else...'
                 }
             }
         }
