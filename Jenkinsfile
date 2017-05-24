@@ -14,8 +14,13 @@ pipeline {
         }
         stage('Build') {
             steps {
+                
                 echo 'Building..'
                 echo "branch: ${env.BRANCH_NAME}"
+                
+                dir('Jorkins') {
+                    checkout scm   
+                }
             }
         }
         stage('Test') {
