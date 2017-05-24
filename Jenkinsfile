@@ -13,6 +13,7 @@ pipeline {
             steps {
                 dir('Bellerophon') {
                     git branch: "${env.BRANCH_NAME}", url: 'https://github.com/adunlea/Bellerophon.git'
+                    stash 'REALLYIMPORTANT.txt'
                 }
             }
         }
@@ -23,7 +24,8 @@ pipeline {
                 echo "branch: ${env.BRANCH_NAME}"
                 
                 dir('Jorkins') {
-                    checkout scm   
+                    checkout scm
+                    unstash 'REALLYIMPORTANT.txt'
                 }
             }
         }
