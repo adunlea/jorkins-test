@@ -7,7 +7,9 @@ pipeline {
                 branch 'production'
             }
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/production']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/adunlea/Bellerophon.git']]])   
+                dir('Bellerophon') {
+                    git branch: 'production', url: 'https://github.com/adunlea/Bellerophon.git'
+                }
             }
         }
         stage('Build') {
