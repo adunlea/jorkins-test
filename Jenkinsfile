@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                if($env.BRANCH_NAME == 'production') {
+                if(env.BRANCH_NAME == 'production') {
                     echo 'Deploying for production...'
                 } else {
                     echo "Deploying for something else..."
