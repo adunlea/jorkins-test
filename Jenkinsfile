@@ -8,11 +8,11 @@ pipeline {
     stages {
         stage('Build Backend') {
             when {
-                branch 'production'
+                branch 'production*'
             }
             steps {
                 dir('Bellerophon') {
-                    git branch: 'production', url: 'https://github.com/adunlea/Bellerophon.git'
+                    git branch: "${env.BRANCH_NAME}", url: 'https://github.com/adunlea/Bellerophon.git'
                 }
             }
         }
