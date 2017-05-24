@@ -15,7 +15,10 @@ pipeline {
             }
         }
         stage('Deploy') {
-            when { branch 'production' }
+            when { 
+                branch 'production' 
+            }
+            steps {
                 echo 'Deploying...'
             }
         }
