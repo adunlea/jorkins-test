@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git 'https://github.com/adunlea/jorkins-test.git'
+                checkout scm
                 echo 'Building..'
                 echo "branch: ${env.BRANCH_NAME}"
             }
@@ -15,13 +15,10 @@ pipeline {
             }
         }
         stage('Deploy') {
-            steps {
-                when {
-                    expression { return env.BRANCHNAME == 'production'}
-                }
-                steps {
-                    echo 'Deploying for production...'
-                } 
+            when {
+                branch 'production'
+            }
+                echo 'Deploying...'
             }
         }
         stage('Dance Party') {
