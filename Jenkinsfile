@@ -19,7 +19,7 @@ pipeline {
                 if($env.BRANCH_NAME == 'production') {
                     echo 'Deploying for production...'
                 } else {
-                    echo "Deploying for something else...'
+                    echo "Deploying for something else..."
                 }
             }
         }
