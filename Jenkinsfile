@@ -16,11 +16,12 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                if(env.BRANCH_NAME == 'production') {
-                    echo 'Deploying for production...'
-                } else {
-                    echo "Deploying for something else..."
+                when {
+                    expression { return env.BRANCHNAME == 'production'}
                 }
+                steps {
+                    echo 'Deploying for production...'
+                } 
             }
         }
         stage('Dance Party') {
