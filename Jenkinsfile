@@ -49,7 +49,7 @@ pipeline {
         }
         stage('Deploy') {
             when { 
-                branch 'production' 
+                branch 'production*' 
             }
             steps {
                 echo 'Deploying...'
@@ -57,6 +57,7 @@ pipeline {
                 
                 dir('Johorokins/testfolder') {
                     unstash 'REALLYIMPORTANT.txt'
+                    unstash 'doesnotexist.txt'
                 }
             }
         }
