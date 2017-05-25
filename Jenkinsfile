@@ -6,6 +6,11 @@ pipeline {
     }
     
     stages {
+        stage('Clean workspace') {
+            steps {
+                cleanWs()   
+            }
+        }
         stage('Build Backend') {
             when {
                 branch 'production*'
@@ -48,7 +53,7 @@ pipeline {
         stage('Dance Party') {
             steps {
                 echo 'Dancing....'
-                cleanWs()
+                
             }
         }
     }
