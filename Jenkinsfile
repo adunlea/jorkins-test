@@ -57,7 +57,6 @@ pipeline {
                 
                 dir('Johorokins/testfolder') {
                     unstash 'REALLYIMPORTANT.txt'
-                    unstash 'doesnotexist.txt'
                 }
             }
         }
