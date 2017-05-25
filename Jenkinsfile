@@ -21,7 +21,7 @@ pipeline {
                 echo 'Building..'
                 echo "branch: ${env.BRANCH_NAME}"
                 
-                dir(Johorokins) {
+                dir('Johorokins') {
                     checkout scm
                     unstash 'REALLYIMPORTANT.txt'
                 }
