@@ -49,7 +49,7 @@ pipeline {
         }
         stage('Deploy') {
             when { 
-                branch 'production' 
+                branch 'production*' 
             }
             steps {
                 echo 'Deploying...'
