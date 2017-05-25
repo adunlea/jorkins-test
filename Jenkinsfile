@@ -38,9 +38,7 @@ pipeline {
                 
                 dir('Johorokins') {
                     checkout scm
-                    dir('testfolder') {
-                        unstash 'REALLYIMPORTANT.txt'
-                    }
+              
                 }
             }
         }
@@ -56,6 +54,10 @@ pipeline {
             steps {
                 echo 'Deploying...'
                 echo "It's production party time!"
+                
+                dir('Johorokins/testfolder') {
+                    unstash 'REALLYIMPORTANT.txt'
+                }
             }
         }
         stage('Dance Party') {
