@@ -25,7 +25,9 @@ pipeline {
                 
                 dir('Johorokins') {
                     checkout scm
-                    unstash 'REALLYIMPORTANT.txt'
+                    dir('testfolder') {
+                        unstash 'REALLYIMPORTANT.txt'
+                    }
                 }
             }
         }
@@ -46,6 +48,7 @@ pipeline {
         stage('Dance Party') {
             steps {
                 echo 'Dancing....'
+                cleanWs()
             }
         }
     }
